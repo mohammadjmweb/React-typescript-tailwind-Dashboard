@@ -3,17 +3,17 @@ import axios from 'axios'
 import { FaCheck } from "react-icons/fa6";
 import { FaX } from "react-icons/fa6";
 import {format,startOfMonth,addMonths,isToday, eachDayOfInterval, startOfWeek} from 'date-fns'
-import userImg from './formal-photo.jpg'
+import userImg from './assets/formal-photo.jpg'
 import { FaChartLine } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa";
 import { FaChartArea } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
-import nature1 from './nature1.jpg'
-import nature2 from './nature2.jpg'
-import nature3 from './nature3.jpg'
-import nature4 from './nature4.jpg'
+import nature1 from './assets/nature1.jpg'
+import nature2 from './assets/nature2.jpg'
+import nature3 from './assets/nature3.jpg'
+import nature4 from './assets/nature4.jpg'
 
 type DashboardProps={
     sidebarOpen:boolean

@@ -8,7 +8,6 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Charts from './Charts'
 import SignUp from './SignUp'
 
-
 const App:React.FC=()=>{
     const [sidebarOpen,setSidebarOpen]=useState<boolean>(false)
 
