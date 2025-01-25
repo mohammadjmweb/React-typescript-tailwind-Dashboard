@@ -13,13 +13,15 @@ type SignUpProps={
 interface SignUpFromData{
     username:string;
     email:string;
-    password:string
+    password:string;
+    confirmPassword:string
 }
 
 const schema=yup.object().shape({
     username:yup.string().matches(/^[A-Za-z][A-Za-z0-9]{3,}$/,'Username must start with a letter and be at least 4 characters long.').required('Username is required'),
     email:yup.string().matches(/^[A-Za-z][A-Za-z0-9]{3,}@(gmail.com|yahoo.com)$/,'The email must start with a letter and must have 4 characters before @ and must end with @yahoo.com or @gmail.com').required('Email is required'),
-    password:yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{9,}$/,'Password must be at least 9 character long and include uppercase letters,lowercase letters,and numbers.').required('Password is required')
+    password:yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{9,}$/,'Password must be at least 9 character long and include uppercase letters,lowercase letters,and numbers.').required('Password is required'),
+    confirmPassword:yup.string().oneOf([yup.ref('password')],'Passwords must match').required('Confirm Password is required')
 })
 
 const submitData=async(data:SignUpFromData)=>{
@@ -73,6 +75,12 @@ const SignUp:React.FC<SignUpProps>=({sidebarOpen})=>{
                         <input type='password' {...register('password',{onChange:()=>trigger('password')})} className={` bg-black rounded w-full py-2 px-3 text-gray-300 outline-none transition-all duration-300 ${errors.password ? 'border-red-500' : ''} `} />
                     </div>
                     {errors.password && <p className='text-red-500 text-base bg-blue-900 rounded-lg p-1 '>{errors.password.message}</p>}
+
+                    <div className='mb-2'>
+                        <label className='block text-gray-300'>Confirm Password</label>
+                        <input type='password' {...register('confirmPassword',{onChange:()=>trigger('confirmPassword')})} className={` bg-black rounded w-full py-2 px-3 text-gray-300 outline-none transition-all duration-300 ${errors.password ? 'border-red-500' : ''} `} />
+                    </div>
+                    {errors.confirmPassword && <p className='text-red-500 text-base bg-blue-900 rounded-lg p-1 '>{errors.confirmPassword.message}</p>}
 
                 <div className="flex justify-between items-center my-6">
                     <div className="checkbox">
